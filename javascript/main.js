@@ -1,1 +1,5 @@
-console.log('billen');
+window.addEventListener('load', init);
+
+function init(){
+    const button =
+}
