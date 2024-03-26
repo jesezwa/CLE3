@@ -19,13 +19,11 @@ function getGeoLocation(e){
     // Haal locatie op en stuur door naar showlocaton functie
     navigator.geolocation.getCurrentPosition(showLocation);
 
-    // Zorg dat de locatie continu opnieuw wordt ververst
-    navigator.geolocation.watchPosition(showLocation);
 }
 
 function showLocation(location){
     button.remove();
-    userLocation = '';
+    userLocation.innerHTML = '';
     userLocation.innerHTML = (location.coords.latitude + ', ' + location.coords.longitude);
     console.log(location.coords.latitude + ', ' + location.coords.longitude)
 
