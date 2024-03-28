@@ -20,9 +20,14 @@ function init(){
 function initMap() {
     let wijnhaven4 = 'dba152c45ac190f4';
 
+
+
+
     map = new google.maps.Map(document.getElementById("map"), { // hier wordt de map ingeladen
-        center: { lat: -34.397, lng: 150.644 }, // Hier worden de centrum coördinaten ingesteld
-        zoom: 10, // Hir wordt ingesteld hoeveel er ingezoomed wordt
+        center: { lat: 51.917423, lng: 4.484874 }, // Hier worden de centrum coördinaten ingesteld
+        zoom: 25, // Hir wordt ingesteld hoeveel er ingezoomed wordt
+
+        heading: 180,
         mapId: wijnhaven4, // Dit is het ID van de map
 
         // Hier wordt de standaar UI eruit gehaald
@@ -32,8 +37,8 @@ function initMap() {
         keyboardShortcuts: false, // Haalt het keyboardshortcuts knopje weg
 
         // Hier wordt de mogelijkheid om van locatie te veranderen en uit of in te zoomen uitgezet
-        gestureHandling: "none", // Haalt mogelijkheid om te zoomen met muis/ of andere input mogelijkheden weg
-        draggable: false // Zorgt ervoor dat de kaart niet versleept kan worden
+        gestureHandling: "auto", // Haalt mogelijkheid om te zoomen met muis/ of andere input mogelijkheden weg
+        draggable: true // Zorgt ervoor dat de kaart niet versleept kan worden
 
     });
 }
