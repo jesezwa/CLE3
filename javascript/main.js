@@ -1,23 +1,11 @@
 window.addEventListener('load', init);
 
-let userLocation;
-let button;
-
-
-
-
-
-
-
+let marker;
+let liveLat;
+let liveLng;
 
 function init(){
-
-    // Benodigheden ophalen uit HTML
-    userLocation = document.getElementById('userLocation');
-    button = document.getElementById('button');
-
-    // De button verwijzen naar getGeoLocation functie
-    button.addEventListener('click', getGeoLocation);
+    updateUserLiveLocation();
 
 
 }
@@ -93,27 +81,67 @@ function initMap() {
     );
 
     const customOverlay = new CustomOverlay(imageBounds, 'img/groundmapTestV3.png', map);
-
-
-
 }
 
 
+// functie voor het bijhouden en volgen van de user
+function updateUserLiveLocation(){
 
+    // Checken of de browser de geolocation API support
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(watchUserLiveLocation);
+        // navigator.geolocation.watchPosition(watchUserLiveLocation);
 
+    } else {
+        console.error('Jouw apparaat ondersteunt geen live locatie!');
+    }
+}
 
+function watchUserLiveLocation(location){
+    liveLat = location.coords.latitude;
+    liveLng = location.coords.longitude;
 
+    console.log(liveLat);
+    console.log(liveLng);
 
-function getGeoLocation(e){
-    // Haal locatie op en stuur door naar showlocaton functie
-    navigator.geolocation.getCurrentPosition(showLocation);
+    createUserLocationMarker(liveLat, liveLng);
 
 }
 
-function showLocation(location){
-    button.remove();
-    userLocation.innerHTML = '';
-    userLocation.innerHTML = (location.coords.latitude + ', ' + location.coords.longitude); // Vult de coördinaten in en lat ze zien op de pagina
-    console.log(location.coords.latitude + ', ' + location.coords.longitude)
+function createUserLocationMarker(lat, lng) {
 
+    if (!marker) {
+        marker = new google.maps.Marker({
+            position: {lat: lat, lng: lng},
+            map,
+            title: "Hello World!",
+        })
+    } else {
+        marker.setPosition({lat: lat, lng: lng});
+    }
 }
+
+setInterval(updateUserLiveLocation, 2500);
+
+// Functie voor het updaten van de locatie
+    // Checken of de browser de api ondersteunt
+    // Zo nee:
+        // Geef een error
+    // Zo ja:
+        // De locatie ophalen met Geolocation
+            // In één variabel zetten, of in twee losse met lang en lat
+        // Checken of er al een marker is:
+            // Zo ja:
+                // Een marker maken met de doorgegeven locatie
+            // Zo nee:
+                // De locatie van de marker updaten met de nieuwe coordinaten
+
+
+// Op een bepaald interval de locatie continu updaten
+
+
+
+
+
+
+
