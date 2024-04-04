@@ -6,8 +6,6 @@ let liveLng;
 
 function init(){
     updateUserLiveLocation();
-
-
 }
 
 // fuctie voor het creeëren van de map, de functie wordt aangeroepen in de script tag in de html
@@ -76,9 +74,9 @@ function initMap() {
 
 
     const imageBounds = new google.maps.LatLngBounds(
-        new google.maps.LatLng(51.917230, 4.484111), // Zuidwestelijke punt
-        new google.maps.LatLng(51.917483, 4.484945)  // Noordoostelijke punt
-    );
+        new google.maps.LatLng(51.917307, 4.484538), // Zuidwestelijke punt
+        new google.maps.LatLng(51.917423, 4.484752)  // Noordoostelijke punt
+        )
 
     const customOverlay = new CustomOverlay(imageBounds, 'img/groundmapTestV3.png', map);
 }
@@ -89,55 +87,51 @@ function updateUserLiveLocation(){
 
     // Checken of de browser de geolocation API support
     if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(watchUserLiveLocation);
-        // navigator.geolocation.watchPosition(watchUserLiveLocation);
-
+        navigator.geolocation.getCurrentPosition(watchUserLiveLocation); // Verzend de locatie naar functie zodat gegeens opgeslagen kunnen worden
     } else {
+        // Error geven als er geen geolocation beschikbaar is
         console.error('Jouw apparaat ondersteunt geen live locatie!');
     }
 }
 
+// Functie voor het bijhouden van de coordinaten
 function watchUserLiveLocation(location){
-    liveLat = location.coords.latitude;
-    liveLng = location.coords.longitude;
+    liveLat = location.coords.latitude; // Latitude opslaan in liveLat
+    liveLng = location.coords.longitude; // Longtitude opslaan in liveLong
 
     console.log(liveLat);
     console.log(liveLng);
 
+    // Stuur de coordinaten door naar functie die de livelocation marker aanmaakt
     createUserLocationMarker(liveLat, liveLng);
 
 }
 
+// Functie voor het maken van de livelocation marker
 function createUserLocationMarker(lat, lng) {
 
+    // Checken of er al een marker is
     if (!marker) {
+        // Zo niet: nieuwe marker aanmaken op de juiste positie
         marker = new google.maps.Marker({
             position: {lat: lat, lng: lng},
             map,
-            title: "Hello World!",
+            title: "Hier sta jij",
         })
     } else {
+        // Zo wel: de locatie wordt alleen veranderd
         marker.setPosition({lat: lat, lng: lng});
     }
 }
 
+// Functie die de bijbehorende markers op de map zet
+    // Maak marker aan
+    // Een click die met DOM
+
+// Een interval die ervoor zorgt dat de locatie optimaal wordt geupdate wordt
 setInterval(updateUserLiveLocation, 2500);
 
-// Functie voor het updaten van de locatie
-    // Checken of de browser de api ondersteunt
-    // Zo nee:
-        // Geef een error
-    // Zo ja:
-        // De locatie ophalen met Geolocation
-            // In één variabel zetten, of in twee losse met lang en lat
-        // Checken of er al een marker is:
-            // Zo ja:
-                // Een marker maken met de doorgegeven locatie
-            // Zo nee:
-                // De locatie van de marker updaten met de nieuwe coordinaten
 
-
-// Op een bepaald interval de locatie continu updaten
 
 
 
