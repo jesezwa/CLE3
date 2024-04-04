@@ -11,12 +11,23 @@
 <body>
     <div class="container">
         <nav>
-            <section class="searchbar">
-                <h3>Search</h3>
-                <img class="magnify-icon" src="img/magnifying_glass_icon.png">
-            </section>
+            <form class="searchbar">
+                <input type="text" placeholder="Search.." name="search" autocomplete="off">
+                <input type="image" class="magnify-icon" name="submit" src="img/magnifying_glass_icon_white.png" alt="submit"/>
+            </form>
         </nav>
 
+        <section class="maps">
+            <section class="map">
+                <img src="img/groundmapHR.png" alt="Hogeschool Rotterdam" class="groundmap">
+                <section class="map-text">
+                    <a href="googleApiTest.html">HR - Rotterdam | Wijnhaven</a>
+                    <a href="googleApiTest.html">
+                        <img class="arrow-icon" src="img/arrow_icon_purple.png" alt="Hogeschool Rotterdam">
+                    </a>
+                </section>
+            </section>
+        </section>
 
     </div>
 </body>
