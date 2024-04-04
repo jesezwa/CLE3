@@ -21,3 +21,30 @@
 
 }
 
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+section.searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.magnify-icon {
+    /* search
+
+zoom, magnify
+*/
+
+    width: 24px;
+    height: 24px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 48;
+    flex-grow: 0;
+
+}
