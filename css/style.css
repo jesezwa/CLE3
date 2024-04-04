@@ -26,10 +26,26 @@
     margin: 0 auto;
 }
 
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
 section.searchbar {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 8vw;
+    align-content: center;
+    max-width: 40vw;
+    color: white;
+    background-color: #3F495E;
+    margin: 0;
+    padding: 0.5vh 25vw;
+    border-radius: 5vh;
+;
 }
 
 .magnify-icon {
