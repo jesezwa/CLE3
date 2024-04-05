@@ -116,6 +116,8 @@ function watchUserLiveLocation(location){
 
 // Functie voor het maken van de livelocation marker
 function createUserLocationMarker(lat, lng) {
+
+    // Zet de image voor de user in een variabel om later te gebruiken
     const userIconImage = {
         url: "./img/user_location_icon.png",
         scaledSize: new google.maps.Size(32, 32),
@@ -138,11 +140,14 @@ function createUserLocationMarker(lat, lng) {
 
 // Functie die de bijbehorende markers op de map zet
 function createDetailMarkers(){
+
+    // Zet icon voor detail in variabel om later te gebruiken
     const detailIconImage = {
         url: "./img/detailMarkerIcon.png",
         scaledSize: new google.maps.Size(22, 22),
     };
 
+    // Hardcoded informatie voor de detail markers
     detailMarkers = ['Team 1', 'Team 2', 'Team 3'];
     coordsDetailMarkers = [ {lat: 51.917395 , lng: 4.484562},
         {lat: 51.917403 , lng: 4.484597},
@@ -150,7 +155,7 @@ function createDetailMarkers(){
     ];
 
 
-
+    // Voor elk item in de detailmarkers array een marker op de
     for (let i= 0; i < detailMarkers.length; i++ ){
         let detailMarker = new google.maps.Marker({
             position: coordsDetailMarkers[i],
@@ -158,6 +163,8 @@ function createDetailMarkers(){
             title: detailMarkers[i],
             icon: detailIconImage,
         })
+
+        // Clicker voor op de marker
         detailMarker.addListener("click", detailsClickHandler);
     }
 
@@ -165,11 +172,13 @@ function createDetailMarkers(){
 
 
 
+// functie voor het laad gedeelte
 function pageLoadIn(){
     const loader = document.querySelector(".loader");
     loader.classList.add('loader-hidden');
 }
 
+// clickhndler voor wanneer op een marker wordt geklikt
 function detailsClickHandler(){
     console.log('billen')
 }
