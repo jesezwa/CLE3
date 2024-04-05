@@ -1,8 +1,10 @@
 window.addEventListener('load', init);
 
-let marker;
+let userMarker;
 let liveLat;
 let liveLng;
+let detailMarkers = [];
+let coordsDetailMarkers = [];
 
 function init(){
     updateUserLiveLocation();
@@ -79,6 +81,7 @@ function initMap() {
         )
 
     const customOverlay = new CustomOverlay(imageBounds, 'img/groundmapTestV3.png', map);
+    createDetailMarkers();
 }
 
 
@@ -111,22 +114,38 @@ function watchUserLiveLocation(location){
 function createUserLocationMarker(lat, lng) {
 
     // Checken of er al een marker is
-    if (!marker) {
+    if (!userMarker) {
         // Zo niet: nieuwe marker aanmaken op de juiste positie
-        marker = new google.maps.Marker({
+        userMarker = new google.maps.Marker({
             position: {lat: lat, lng: lng},
             map,
             title: "Hier sta jij",
         })
     } else {
         // Zo wel: de locatie wordt alleen veranderd
-        marker.setPosition({lat: lat, lng: lng});
+        userMarker.setPosition({lat: lat, lng: lng});
     }
 }
 
 // Functie die de bijbehorende markers op de map zet
-    // Maak marker aan
-    // Een click die met DOM
+function createDetailMarkers(){
+    detailMarkers = ['Team 1', 'Team 2', 'Team 3'];
+    coordsDetailMarkers = [ {lat: 51.917377 , lng: 4.484581},
+        {lat: 51.917383 , lng: 4.484615},
+        {lat: 51.917395 , lng: 4.484660} ,
+    ];
+
+    for (let i= 0; i < detailMarkers.length; i++ ){
+        let detailMarker = new google.maps.Marker({
+            position: coordsDetailMarkers[i],
+            map,
+            title: detailMarkers[i],
+        })
+    }
+
+
+}
+
 
 // Een interval die ervoor zorgt dat de locatie optimaal wordt geupdate wordt
 setInterval(updateUserLiveLocation, 2500);
