@@ -8,6 +8,7 @@ let coordsDetailMarkers = [];
 
 function init(){
     updateUserLiveLocation();
+
 }
 
 // fuctie voor het creeëren van de map, de functie wordt aangeroepen in de script tag in de html
@@ -82,6 +83,9 @@ function initMap() {
 
     const customOverlay = new CustomOverlay(imageBounds, 'img/groundmapTestV3.png', map);
     createDetailMarkers();
+
+
+    google.maps.event.addListenerOnce(map, 'idle', pageLoadIn);
 }
 
 
@@ -112,6 +116,10 @@ function watchUserLiveLocation(location){
 
 // Functie voor het maken van de livelocation marker
 function createUserLocationMarker(lat, lng) {
+    const userIconImage = {
+        url: "./img/user_location_icon.png",
+        scaledSize: new google.maps.Size(32, 32),
+    };
 
     // Checken of er al een marker is
     if (!userMarker) {
@@ -120,6 +128,7 @@ function createUserLocationMarker(lat, lng) {
             position: {lat: lat, lng: lng},
             map,
             title: "Hier sta jij",
+            icon: userIconImage,
         })
     } else {
         // Zo wel: de locatie wordt alleen veranderd
@@ -149,11 +158,21 @@ function createDetailMarkers(){
             title: detailMarkers[i],
             icon: detailIconImage,
         })
+        detailMarker.addListener("click", detailsClickHandler);
     }
-
 
 }
 
+
+
+function pageLoadIn(){
+    const loader = document.querySelector(".loader");
+    loader.classList.add('loader-hidden');
+}
+
+function detailsClickHandler(){
+    console.log('billen')
+}
 
 // Een interval die ervoor zorgt dat de locatie optimaal wordt geupdate wordt
 setInterval(updateUserLiveLocation, 2500);
