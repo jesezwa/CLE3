@@ -85,14 +85,16 @@ zoom, magnify
     max-width: 90vw;
     margin: 0;
     padding: 0;
-    border: 2px solid #9B57FF;
-    border-radius: 15px;
+
 }
 
 .map {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 2px solid #9B57FF;
+    border-radius: 15px;
+    margin-bottom: 2vh;
 }
 
 .map-text {
@@ -122,3 +124,70 @@ zoom, magnify
 
 }
 
+.bot-navbar {
+    display: flex;
+    justify-content: space-evenly;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #ffffff;
+    text-align: center;
+    box-shadow: 0px -4px 12px 0px #00000026;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-top: 2px solid #9B57FF;
+}
+
+.bot-navbar a {
+    text-decoration: none;
+}
+
+.map-icon {
+    /* location
+
+gps, position, pin, map, destination
+*/
+
+    width: 32px;
+    height: 32px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.home-icon {
+    /* home-1
+
+navigation, homepage
+*/
+
+    width: 32px;
+    height: 32px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.list-icon {
+    /* menu
+
+list, navigation, hamburger
+*/
+
+    width: 32px;
+    height: 32px;
+
+
+    /* Inside auto layout */
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+
+}
