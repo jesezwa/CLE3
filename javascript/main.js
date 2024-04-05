@@ -129,17 +129,23 @@ function createUserLocationMarker(lat, lng) {
 
 // Functie die de bijbehorende markers op de map zet
 function createDetailMarkers(){
+    const detailIconImage = document.createElement('img');
+    detailIconImage.src = "img/detailMarkerIcon.png"
+
     detailMarkers = ['Team 1', 'Team 2', 'Team 3'];
-    coordsDetailMarkers = [ {lat: 51.917377 , lng: 4.484581},
-        {lat: 51.917383 , lng: 4.484615},
-        {lat: 51.917395 , lng: 4.484660} ,
+    coordsDetailMarkers = [ {lat: 51.917395 , lng: 4.484561},
+        {lat: 51.917403 , lng: 4.484600},
+        {lat: 51.917409 , lng: 4.484630} ,
     ];
+
+
 
     for (let i= 0; i < detailMarkers.length; i++ ){
         let detailMarker = new google.maps.Marker({
             position: coordsDetailMarkers[i],
             map,
             title: detailMarkers[i],
+            icon: d,
         })
     }
 
