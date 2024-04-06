@@ -2,6 +2,12 @@
 
 }
 
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
 #map {
     height: 90vh;
 }
@@ -190,6 +196,24 @@ list, navigation, hamburger
 
 }
 
+.detail-section {
+    background-color: #9B57FF;
+    height: 70vh;
+    width: 100vw;
+    margin-bottom: auto;
+    position: absolute;
+    z-index: 999;
+    bottom: 70px;
+    left: 0px;
+    display: flex;
+}
+
+.detail-section-top {
+    display: flex;
+    color: white;
+    font-family: Arial;
+
+}
 
 
 .loading-text {

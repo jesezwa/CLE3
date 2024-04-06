@@ -5,6 +5,7 @@ let liveLat;
 let liveLng;
 let detailMarkers = [];
 let coordsDetailMarkers = [];
+let detailSection;
 
 function init(){
     updateUserLiveLocation();
@@ -106,8 +107,7 @@ function watchUserLiveLocation(location){
     liveLat = location.coords.latitude; // Latitude opslaan in liveLat
     liveLng = location.coords.longitude; // Longtitude opslaan in liveLong
 
-    console.log(liveLat);
-    console.log(liveLng);
+
 
     // Stuur de coordinaten door naar functie die de livelocation marker aanmaakt
     createUserLocationMarker(liveLat, liveLng);
@@ -166,6 +166,8 @@ function createDetailMarkers(){
 
         // Clicker voor op de marker
         detailMarker.addListener("click", detailsClickHandler);
+
+
     }
 
 }
@@ -179,13 +181,42 @@ function pageLoadIn(){
 }
 
 // clickhndler voor wanneer op een marker wordt geklikt
-function detailsClickHandler(){
-    console.log('billen')
+function detailsClickHandler(e){
+    console.log('billen');
+    createDetailSection();
 }
+
+// Functie voor maken detail section
+function createDetailSection(){
+    detailSection = document.getElementById("detailSection");
+    detailSection.classList.add('detail-section');
+
+    fillDetailSection();
+
+}
+
+function fillDetailSection(){
+    let detailSectionTop = document.getElementById('detailSectionTop');
+    detailSectionTop.classList.add('detail-section-top')
+
+    let detailSectionBottom = document.getElementById('detailSectionBottom');
+    detailSectionBottom.classList.add('detail-section-bottom');
+
+    let productName = document.createElement('h2');
+    productName.innerHTML = "billen";
+
+    let crossImg = document.createElement('img');
+    crossImg.src = "./img/crossicon.png"
+
+    detailSectionTop.appendChild(crossImg);
+    detailSectionTop.appendChild(productName);
+}
+
+
+
 
 // Een interval die ervoor zorgt dat de locatie optimaal wordt geupdate wordt
 setInterval(updateUserLiveLocation, 2500);
-
 
 
 
