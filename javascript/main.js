@@ -183,6 +183,8 @@ function pageLoadIn(){
 // clickhndler voor wanneer op een marker wordt geklikt
 function detailsClickHandler(e){
     console.log('billen');
+    let clickedButton = e.target;
+    console.log(clickedButton);
     createDetailSection();
 }
 
@@ -190,6 +192,7 @@ function detailsClickHandler(e){
 function createDetailSection(){
     detailSection = document.getElementById("detailSection");
     detailSection.classList.add('detail-section');
+    detailSection.addEventListener('click', detailsClickHandler)
 
     fillDetailSection();
 
@@ -203,10 +206,12 @@ function fillDetailSection(){
     detailSectionBottom.classList.add('detail-section-bottom');
 
     let productName = document.createElement('h2');
-    productName.innerHTML = "billen";
+    productName.innerHTML = "Naam product";
+    productName.classList.add('product-name');
 
     let crossImg = document.createElement('img');
     crossImg.src = "./img/crossicon.png"
+    crossImg.classList.add('cross-icon')
 
     detailSectionTop.appendChild(crossImg);
     detailSectionTop.appendChild(productName);
