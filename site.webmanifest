@@ -1,0 +1,19 @@
+{
+  "name": "Mapify",
+  "short_name": "Mapify",
+  "description": "Mapify is a simple map application that helps hearing impaired people to navigate through the stores and restaurands.",
+  "icons": [
+    {
+      "src": "img/logo-s.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "img/logo-l.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "https://jesezwa.github.io/CLE/index.html",
+  "display": "fullscreen"
+}
