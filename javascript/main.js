@@ -11,7 +11,7 @@ let detailSectionTop;
 let detailSectionBottom;
 let id;
 
-function init(){
+function init() {
     updateUserLiveLocation();
 
 }
@@ -22,7 +22,7 @@ function initMap() {
 
     map = new google.maps.Map(document.getElementById("map"), { // hier wordt de map ingeladen
         mapId: wijnhaven4, // Dit is het ID van de maps
-        center: { lat: 51.917363, lng: 4.484630 }, // Hier worden de centrum coördinaten ingesteld
+        center: {lat: 51.917363, lng: 4.484630}, // Hier worden de centrum coördinaten ingesteld
         zoom: 20, // Hir wordt ingesteld hoeveel er ingezoomed wordt
         heading: 90,
         tilt: 45,
@@ -84,7 +84,7 @@ function initMap() {
     const imageBounds = new google.maps.LatLngBounds(
         new google.maps.LatLng(51.917307, 4.484538), // Zuidwestelijke punt
         new google.maps.LatLng(51.917423, 4.484752)  // Noordoostelijke punt
-        )
+    )
 
     const customOverlay = new CustomOverlay(imageBounds, 'img/groundmapTestV3.png', map);
     createDetailMarkers();
@@ -95,10 +95,10 @@ function initMap() {
 
 
 // functie voor het bijhouden en volgen van de user
-function updateUserLiveLocation(){
+function updateUserLiveLocation() {
 
     // Checken of de browser de geolocation API support
-    if(navigator.geolocation){
+    if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(watchUserLiveLocation); // Verzend de locatie naar functie zodat gegeens opgeslagen kunnen worden
     } else {
         // Error geven als er geen geolocation beschikbaar is
@@ -107,10 +107,9 @@ function updateUserLiveLocation(){
 }
 
 // Functie voor het bijhouden van de coordinaten
-function watchUserLiveLocation(location){
+function watchUserLiveLocation(location) {
     liveLat = location.coords.latitude; // Latitude opslaan in liveLat
     liveLng = location.coords.longitude; // Longtitude opslaan in liveLong
-
 
 
     // Stuur de coordinaten door naar functie die de livelocation marker aanmaakt
@@ -143,7 +142,7 @@ function createUserLocationMarker(lat, lng) {
 }
 
 // Functie die de bijbehorende markers op de map zet
-function createDetailMarkers(){
+function createDetailMarkers() {
 
     // Zet icon voor detail in variabel om later te gebruiken
     const detailIconImage = {
@@ -154,14 +153,14 @@ function createDetailMarkers(){
     // Hardcoded informatie voor de detail markers
     detailMarkers = ['Team 1', 'Team 2', 'Team 3'];
     detailInfo = ['Team 1 blablabla', 'team 2 blablblal', 'team 3 blabla']
-    coordsDetailMarkers = [ {lat: 51.917395 , lng: 4.484562},
-        {lat: 51.917403 , lng: 4.484597},
-        {lat: 51.917409 , lng: 4.484633} ,
+    coordsDetailMarkers = [{lat: 51.917395, lng: 4.484562},
+        {lat: 51.917403, lng: 4.484597},
+        {lat: 51.917409, lng: 4.484633},
     ];
 
 
     // Voor elk item in de detailmarkers array een marker op de
-    for (let i= 0; i < detailMarkers.length; i++ ){
+    for (let i = 0; i < detailMarkers.length; i++) {
         let detailMarker = new google.maps.Marker({
             position: coordsDetailMarkers[i],
             map,
@@ -173,47 +172,44 @@ function createDetailMarkers(){
         detailMarker.addListener("click", () => detailsClickHandler(i));
 
 
-
     }
 
 }
 
 
-
 // functie voor het laad gedeelte
-function pageLoadIn(){
+function pageLoadIn() {
     const loader = document.querySelector(".loader");
     loader.classList.add('loader-hidden');
 }
 
 // clickhndler voor wanneer op een marker wordt geklikt
-function detailsClickHandler(i){
-
-createDetailSection(i);
+function detailsClickHandler(i) {
+    createDetailSection(i);
 
 }
 
 // Functie voor maken detail section
-function createDetailSection(i){
+function createDetailSection(i) {
+    id = i;
+    detailSection = document.getElementById("detailSection");
+    detailSection.classList.add('detail-section');
+    // detailSection.addEventListener('click', detailsClickHandler)
 
-        detailSection = document.getElementById("detailSection");
-        detailSection.classList.add('detail-section');
-        // detailSection.addEventListener('click', detailsClickHandler)
 
-
-    fillDetailSection();
+    fillDetailSection(id);
 
 }
 
-function fillDetailSection(){
+function fillDetailSection(id) {
     detailSectionTop = document.getElementById('detailSectionTop');
     detailSectionTop.classList.add('detail-section-top')
 
-     detailSectionBottom = document.getElementById('detailSectionBottom');
+    detailSectionBottom = document.getElementById('detailSectionBottom');
     detailSectionBottom.classList.add('detail-section-bottom');
 
     let productName = document.createElement('h2');
-    productName.innerHTML = "";
+    productName.innerHTML = detailMarkers[id];
     productName.classList.add('product-name');
 
     let crossImg = document.createElement('img');
@@ -222,7 +218,7 @@ function fillDetailSection(){
     crossImg.addEventListener('click', removeDetailSection);
 
     let description = document.createElement('p');
-    description.innerHTML = 'billen';
+    description.innerHTML = detailInfo[id];
     description.classList.add('details-description');
 
     detailSectionTop.appendChild(crossImg);
@@ -230,13 +226,12 @@ function fillDetailSection(){
     detailSectionBottom.appendChild(description)
 }
 
-function removeDetailSection(){
+function removeDetailSection() {
 
     detailSectionTop.innerHTML = "";
     detailSectionBottom.innerHTML = "";
-detailSection.classList.remove('detail-section');
+    detailSection.classList.remove('detail-section');
 }
-
 
 
 // Een interval die ervoor zorgt dat de locatie optimaal wordt geupdate wordt
