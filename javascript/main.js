@@ -5,7 +5,11 @@ let liveLat;
 let liveLng;
 let detailMarkers = [];
 let coordsDetailMarkers = [];
+let detailInfo = [];
 let detailSection;
+let detailSectionTop;
+let detailSectionBottom;
+let id;
 
 function init(){
     updateUserLiveLocation();
@@ -149,6 +153,7 @@ function createDetailMarkers(){
 
     // Hardcoded informatie voor de detail markers
     detailMarkers = ['Team 1', 'Team 2', 'Team 3'];
+    detailInfo = ['Team 1 blablabla', 'team 2 blablblal', 'team 3 blabla']
     coordsDetailMarkers = [ {lat: 51.917395 , lng: 4.484562},
         {lat: 51.917403 , lng: 4.484597},
         {lat: 51.917409 , lng: 4.484633} ,
@@ -165,7 +170,8 @@ function createDetailMarkers(){
         })
 
         // Clicker voor op de marker
-        detailMarker.addListener("click", detailsClickHandler);
+        detailMarker.addListener("click", () => detailsClickHandler(i));
+
 
 
     }
@@ -181,42 +187,55 @@ function pageLoadIn(){
 }
 
 // clickhndler voor wanneer op een marker wordt geklikt
-function detailsClickHandler(e){
-    console.log('billen');
-    let clickedButton = e.target;
-    console.log(clickedButton);
-    createDetailSection();
+function detailsClickHandler(i){
+
+createDetailSection(i);
+
 }
 
 // Functie voor maken detail section
-function createDetailSection(){
-    detailSection = document.getElementById("detailSection");
-    detailSection.classList.add('detail-section');
-    detailSection.addEventListener('click', detailsClickHandler)
+function createDetailSection(i){
+
+        detailSection = document.getElementById("detailSection");
+        detailSection.classList.add('detail-section');
+        // detailSection.addEventListener('click', detailsClickHandler)
+
 
     fillDetailSection();
 
 }
 
 function fillDetailSection(){
-    let detailSectionTop = document.getElementById('detailSectionTop');
+    detailSectionTop = document.getElementById('detailSectionTop');
     detailSectionTop.classList.add('detail-section-top')
 
-    let detailSectionBottom = document.getElementById('detailSectionBottom');
+     detailSectionBottom = document.getElementById('detailSectionBottom');
     detailSectionBottom.classList.add('detail-section-bottom');
 
     let productName = document.createElement('h2');
-    productName.innerHTML = "Naam product";
+    productName.innerHTML = "";
     productName.classList.add('product-name');
 
     let crossImg = document.createElement('img');
     crossImg.src = "./img/crossicon.png"
     crossImg.classList.add('cross-icon')
+    crossImg.addEventListener('click', removeDetailSection);
+
+    let description = document.createElement('p');
+    description.innerHTML = 'billen';
+    description.classList.add('details-description');
 
     detailSectionTop.appendChild(crossImg);
     detailSectionTop.appendChild(productName);
+    detailSectionBottom.appendChild(description)
 }
 
+function removeDetailSection(){
+
+    detailSectionTop.innerHTML = "";
+    detailSectionBottom.innerHTML = "";
+detailSection.classList.remove('detail-section');
+}
 
 
 

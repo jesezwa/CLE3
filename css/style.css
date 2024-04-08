@@ -233,6 +233,10 @@ list, navigation, hamburger
     padding-left: 15px;
 }
 
+.details-description {
+    color: white;
+    font-family: Arial;
+}
 
 .loading-text {
     font-family: Arial;
