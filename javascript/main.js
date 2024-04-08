@@ -34,8 +34,8 @@ function initMap() {
         keyboardShortcuts: false, // Haalt het keyboardshortcuts knopje weg
 
         // Hier wordt de mogelijkheid om van locatie te veranderen en uit of in te zoomen uitgezet
-        gestureHandling: "auto", // Haalt mogelijkheid om te zoomen met muis/ of andere input mogelijkheden weg
-        draggable: true // Zorgt ervoor dat de kaart niet versleept kan worden
+        gestureHandling: "none", // Haalt mogelijkheid om te zoomen met muis/ of andere input mogelijkheden weg
+        draggable: false // Zorgt ervoor dat de kaart niet versleept kan worden
 
     });
 
