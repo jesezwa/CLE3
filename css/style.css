@@ -211,6 +211,7 @@ list, navigation, hamburger
     bottom: 70px;
     left: 0px;
     display: flex;
+    flex-direction: column;
 }
 
 .detail-section-top {
@@ -221,6 +222,9 @@ list, navigation, hamburger
     gap: 30px;
 }
 
+.detail-section-bottom p {
+    padding-left: 10px;
+}
 .cross-icon {
     height: 40px;
     width: 40px;
@@ -233,6 +237,10 @@ list, navigation, hamburger
     padding-left: 15px;
 }
 
+.details-description {
+    color: white;
+    font-family: Arial;
+}
 
 .loading-text {
     font-family: Arial;

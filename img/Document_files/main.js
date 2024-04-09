@@ -5,13 +5,8 @@ let liveLat;
 let liveLng;
 let detailMarkers = [];
 let coordsDetailMarkers = [];
-let detailInfo = [];
-let detailSection;
-let detailSectionTop;
-let detailSectionBottom;
-let id;
 
-function init() {
+function init(){
     updateUserLiveLocation();
 
 }
@@ -22,7 +17,7 @@ function initMap() {
 
     map = new google.maps.Map(document.getElementById("map"), { // hier wordt de map ingeladen
         mapId: wijnhaven4, // Dit is het ID van de maps
-        center: {lat: 51.917363, lng: 4.484630}, // Hier worden de centrum coördinaten ingesteld
+        center: { lat: 51.917363, lng: 4.484630 }, // Hier worden de centrum coördinaten ingesteld
         zoom: 20, // Hir wordt ingesteld hoeveel er ingezoomed wordt
         heading: 90,
         tilt: 45,
@@ -34,8 +29,8 @@ function initMap() {
         keyboardShortcuts: false, // Haalt het keyboardshortcuts knopje weg
 
         // Hier wordt de mogelijkheid om van locatie te veranderen en uit of in te zoomen uitgezet
-        gestureHandling: "none", // Haalt mogelijkheid om te zoomen met muis/ of andere input mogelijkheden weg
-        draggable: false // Zorgt ervoor dat de kaart niet versleept kan worden
+        gestureHandling: "auto", // Haalt mogelijkheid om te zoomen met muis/ of andere input mogelijkheden weg
+        draggable: true // Zorgt ervoor dat de kaart niet versleept kan worden
 
     });
 
@@ -84,7 +79,7 @@ function initMap() {
     const imageBounds = new google.maps.LatLngBounds(
         new google.maps.LatLng(51.917307, 4.484538), // Zuidwestelijke punt
         new google.maps.LatLng(51.917423, 4.484752)  // Noordoostelijke punt
-    )
+        )
 
     const customOverlay = new CustomOverlay(imageBounds, 'img/groundmapTestV3.png', map);
     createDetailMarkers();
@@ -95,10 +90,10 @@ function initMap() {
 
 
 // functie voor het bijhouden en volgen van de user
-function updateUserLiveLocation() {
+function updateUserLiveLocation(){
 
     // Checken of de browser de geolocation API support
-    if (navigator.geolocation) {
+    if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(watchUserLiveLocation); // Verzend de locatie naar functie zodat gegeens opgeslagen kunnen worden
     } else {
         // Error geven als er geen geolocation beschikbaar is
@@ -107,9 +102,10 @@ function updateUserLiveLocation() {
 }
 
 // Functie voor het bijhouden van de coordinaten
-function watchUserLiveLocation(location) {
+function watchUserLiveLocation(location){
     liveLat = location.coords.latitude; // Latitude opslaan in liveLat
     liveLng = location.coords.longitude; // Longtitude opslaan in liveLong
+
 
 
     // Stuur de coordinaten door naar functie die de livelocation marker aanmaakt
@@ -142,7 +138,7 @@ function createUserLocationMarker(lat, lng) {
 }
 
 // Functie die de bijbehorende markers op de map zet
-function createDetailMarkers() {
+function createDetailMarkers(){
 
     // Zet icon voor detail in variabel om later te gebruiken
     const detailIconImage = {
@@ -152,15 +148,14 @@ function createDetailMarkers() {
 
     // Hardcoded informatie voor de detail markers
     detailMarkers = ['Team 1', 'Team 2', 'Team 3'];
-    detailInfo = ['Team 1 blablabla', 'team 2 blablblal', 'team 3 blabla']
-    coordsDetailMarkers = [{lat: 51.917395, lng: 4.484562},
-        {lat: 51.917403, lng: 4.484597},
-        {lat: 51.917409, lng: 4.484633},
+    coordsDetailMarkers = [ {lat: 51.917395 , lng: 4.484562},
+        {lat: 51.917403 , lng: 4.484597},
+        {lat: 51.917409 , lng: 4.484633} ,
     ];
 
 
     // Voor elk item in de detailmarkers array een marker op de
-    for (let i = 0; i < detailMarkers.length; i++) {
+    for (let i= 0; i < detailMarkers.length; i++ ){
         let detailMarker = new google.maps.Marker({
             position: coordsDetailMarkers[i],
             map,
@@ -169,7 +164,7 @@ function createDetailMarkers() {
         })
 
         // Clicker voor op de marker
-        detailMarker.addListener("click", () => detailsClickHandler(i));
+        detailMarker.addListener("click", detailsClickHandler);
 
 
     }
@@ -177,61 +172,27 @@ function createDetailMarkers() {
 }
 
 
+
 // functie voor het laad gedeelte
-function pageLoadIn() {
+function pageLoadIn(){
     const loader = document.querySelector(".loader");
     loader.classList.add('loader-hidden');
 }
 
 // clickhndler voor wanneer op een marker wordt geklikt
-function detailsClickHandler(i) {
-    createDetailSection(i);
-
+function detailsClickHandler(e){
+    console.log('billen');
+    createDetailSection();
 }
 
 // Functie voor maken detail section
-function createDetailSection(i) {
-    id = i;
-    detailSection = document.getElementById("detailSection");
+function createDetailSection(){
+    let detailSection = document.getElementById("detailSection");
     detailSection.classList.add('detail-section');
-    // detailSection.addEventListener('click', detailsClickHandler)
-
-
-    fillDetailSection(id);
-
 }
 
-function fillDetailSection(id) {
-    detailSectionTop = document.getElementById('detailSectionTop');
-    detailSectionTop.classList.add('detail-section-top')
 
-    detailSectionBottom = document.getElementById('detailSectionBottom');
-    detailSectionBottom.classList.add('detail-section-bottom');
 
-    let productName = document.createElement('h2');
-    productName.innerHTML = detailMarkers[id];
-    productName.classList.add('product-name');
-
-    let crossImg = document.createElement('img');
-    crossImg.src = "./img/crossicon.png"
-    crossImg.classList.add('cross-icon')
-    crossImg.addEventListener('click', removeDetailSection);
-
-    let description = document.createElement('p');
-    description.innerHTML = detailInfo[id];
-    description.classList.add('details-description');
-
-    detailSectionTop.appendChild(crossImg);
-    detailSectionTop.appendChild(productName);
-    detailSectionBottom.appendChild(description)
-}
-
-function removeDetailSection() {
-
-    detailSectionTop.innerHTML = "";
-    detailSectionBottom.innerHTML = "";
-    detailSection.classList.remove('detail-section');
-}
 
 
 // Een interval die ervoor zorgt dat de locatie optimaal wordt geupdate wordt

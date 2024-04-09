@@ -1,109 +1,91 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Maps</title>
-    <link rel="stylesheet" href="css/style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mapify</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="site.webmanifest" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 </head>
-<body>
-    <div class="container">
-        <nav>
-            <form class="searchbar">
-                <input type="text" placeholder="Search.." name="search" autocomplete="off">
-                <input type="image" class="magnify-icon" name="submit" src="img/magnifying_glass_icon_white.png" alt="submit"/>
-            </form>
-        </nav>
 
-        <section class="maps">
-            <section class="map">
-                <a href="googleApiTest.html">
-                <img src="img/groundmapHR.png" alt="Hogeschool Rotterdam" class="groundmap">
-                </a>
-                <section class="map-text">
-                    <a href="googleApiTest.html">HR - Rotterdam | Wijnhaven</a>
-                    <a href="googleApiTest.html">
-                        <img class="arrow-icon" src="img/arrow_icon_purple.png" alt="Hogeschool Rotterdam">
-                    </a>
-                </section>
-            </section>
-            <section class="map">
-                <a href="googleApiTest.html">
-                    <img src="img/groundmapJUMBO.png" alt="Wijnhaven Jumbo" class="groundmap">
-                </a>
-                <section class="map-text">
-                    <a href="googleApiTest.html">JUMBO | Wijnhaven</a>
-                    <a href="googleApiTest.html">
-                        <img class="arrow-icon" src="img/arrow_icon_purple.png" alt="Wijnhaven Jumbo">
-                    </a>
-                </section>
-            </section>
-            <section class="map">
-                <a href="googleApiTest.html">
-                    <img src="img/groundmapHR.png" alt="Hogeschool Rotterdam" class="groundmap">
-                </a>
-                <section class="map-text">
-                    <a href="googleApiTest.html">HR - Rotterdam | Wijnhaven</a>
-                    <a href="googleApiTest.html">
-                        <img class="arrow-icon" src="img/arrow_icon_purple.png" alt="Hogeschool Rotterdam">
-                    </a>
-                </section>
-            </section>
-            <section class="map">
-                <a href="googleApiTest.html">
-                    <img src="img/groundmapHR.png" alt="Hogeschool Rotterdam" class="groundmap">
-                </a>
-                <section class="map-text">
-                    <a href="googleApiTest.html">HR - Rotterdam | Wijnhaven</a>
-                    <a href="googleApiTest.html">
-                        <img class="arrow-icon" src="img/arrow_icon_purple.png" alt="Hogeschool Rotterdam">
-                    </a>
-                </section>
-            </section>
-            <section class="map">
-                <a href="googleApiTest.html">
-                    <img src="img/groundmapHR.png" alt="Hogeschool Rotterdam" class="groundmap">
-                </a>
-                <section class="map-text">
-                    <a href="googleApiTest.html">HR - Rotterdam | Wijnhaven</a>
-                    <a href="googleApiTest.html">
-                        <img class="arrow-icon" src="img/arrow_icon_purple.png" alt="Hogeschool Rotterdam">
-                    </a>
-                </section>
-            </section>
-            <section class="map">
-                <a href="googleApiTest.html">
-                    <img src="img/groundmapHR.png" alt="Hogeschool Rotterdam" class="groundmap">
-                </a>
-                <section class="map-text">
-                    <a href="googleApiTest.html">HR - Rotterdam | Wijnhaven</a>
-                    <a href="googleApiTest.html">
-                        <img class="arrow-icon" src="img/arrow_icon_purple.png" alt="Hogeschool Rotterdam">
-                    </a>
-                </section>
-            </section>
+<body class="h-screen">
+  <div class="container h-full">
+    <nav class="max-w-lg w-full px-8">
+      <form class="flex max-w-lg w-full bg-gray-600 p-2 rounded-full mt-8">
+        <input type="text" placeholder="Search.." name="search" autocomplete="off"
+          class="bg-gray-600 pl-2 text-white outline-none w-full">
+        <input type="image" class="magnify-icon" name="submit" src="img/magnifying_glass_icon_white.png" alt="submit" />
+      </form>
+    </nav>
+
+    <section class="maps flex h-full gap-8 max-w-lg w-full p-8">
+      <section class="flex flex-col border-[4px] rounded-2xl border-purple-500 w-full">
+        <a href="googleApiTest.html">
+          <!-- <img src="img/groundmapHR.png" alt="Hogeschool Rotterdam" class="object-cover rounded-xl"> -->
+          <img src="img/groundmapHR.png" alt="Hogeschool Rotterdam" class="object-cover rounded-t-xl w-full">
+        </a>
+        <section class="flex justify-between content-center p-4 w-full">
+          <a href="googleApiTest.html" class="font-['nunito'] font-[900] text-purple-500 align-bottom h-full">HR -
+            Rotterdam |
+            Wijnhaven</a>
+          <a href="googleApiTest.html" class="flex items-center">
+            <svg class="stroke-purple-500 h-8 w-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 6L19 12M19 12L13 18M19 12H5" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
         </section>
 
-        <footer>
-            <section class="bot-navbar">
-                <a href="googleApiTest.html">
-                    <img class="map-icon" src="img/map_icon_purple.png" alt="Navigatie">
-                </a>
-                <a href="index.html">
-                    <img class="home-icon" src="img/home_icon_purple.png" alt="Home pagina">
-                </a>
-                <a href="javascript: history.go(-1)">
-                    <img class="list-icon" src="img/arrow_icon_purple_left.png" alt="terug">
-                </a>
-            </section>
-        </footer>
+      </section>
+      <section
+        class="flex flex-col justify-center items-center border-[4px] rounded-2xl border-purple-500 border-dotted w-full h-48">
+        <button class="font-['nunito'] font-[900] text-purple-500">+ add map</button>
+      </section>
+    </section>
 
-    </div>
+    <footer>
+      <section class="bot-navbar border-purple-500 border-t-[2.5px]">
+        <a href="googleApiTest.html">
+          <svg class="stroke-purple-500 w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M7.37584 4.85915C8.65549 3.61971 10.1969 3 12 3C13.8031 3 15.3372 3.61267 16.6023 4.83803C17.8675 6.06339 18.5 7.54929 18.5 9.29577C18.5 10.169 18.2746 11.169 17.8238 12.2958C17.373 13.4225 16.8277 14.4789 16.1879 15.4648C15.5481 16.4507 14.9156 17.3732 14.2903 18.2324C13.665 19.0916 13.1342 19.7746 12.698 20.2817L12 21C11.8255 20.8028 11.5928 20.5423 11.302 20.2183C11.0112 19.8944 10.4877 19.2465 9.73154 18.2746C8.97539 17.3028 8.31376 16.3592 7.74664 15.4437C7.17953 14.5282 6.66331 13.493 6.19799 12.338C5.73266 11.1831 5.5 10.169 5.5 9.29577C5.5 7.54929 6.12527 6.07043 7.37584 4.85915Z"
+              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path
+              d="M13 9.5C13 10.0523 12.5523 10.5 12 10.5C11.4477 10.5 11 10.0523 11 9.5C11 8.94772 11.4477 8.5 12 8.5C12.5523 8.5 13 8.94772 13 9.5Z"
+              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+
+        </a>
+        <a href="index.html">
+          <svg class="stroke-purple-500 w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M19.0167 7.14184C19.6261 7.50155 20 8.15652 20 8.86416V18.0001C20 19.1046 19.1046 20.0001 18 20.0001H16C14.8954 20.0001 14 19.1046 14 18.0001V14C14 12.8954 13.1046 12 12 12V12C10.8954 12 10 12.8954 10 14V18.0001C10 19.1046 9.10457 20.0001 8 20.0001H6C4.89543 20.0001 4 19.1046 4 18.0001V8.86416C4 8.15652 4.37395 7.50155 4.98335 7.14183L10.9833 3.60017C11.6106 3.22994 12.3894 3.22994 13.0167 3.60017L19.0167 7.14184Z"
+              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+
+        </a>
+        <a href="javascript: history.go(-1)">
+          <svg class="stroke-purple-500 w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 6L5 12M5 12L11 18M5 12H19" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+
+        </a>
+      </section>
+    </footer>
+
+  </div>
 
 
 
 </body>
+
 </html>
