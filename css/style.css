@@ -205,7 +205,7 @@ list, navigation, hamburger
     box-shadow: 0px -4px 12px 0px #00000026;
     height: 0;
     overflow: hidden;
-    transition:  height ease 0.3s;
+    transition:  height ease 1s;
     width: 100vw;
     margin-bottom: auto;
     position: absolute;
