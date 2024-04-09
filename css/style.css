@@ -203,9 +203,10 @@ list, navigation, hamburger
 .detail-section {
     background-color: #9B57FF;
     box-shadow: 0px -4px 12px 0px #00000026;
+    transition: height 0.5s ease, opacity 0.5s ease;
     height: 0;
     overflow: hidden;
-    transition:  height ease 1s;
+    opacity: 0;
     width: 100vw;
     margin-bottom: auto;
     position: absolute;
@@ -216,10 +217,14 @@ list, navigation, hamburger
     flex-direction: column;
 }
 
-
-.detail-section:active {
-    height: 70vh;
+.detail-section.active {
+    height: 70vh; /* Stel de gewenste hoogte van de detailsectie in */
+    opacity: 1; /* Maak de sectie volledig zichtbaar */
 }
+
+
+
+
 .detail-section-top {
     display: flex;
     flex-direction: column;
