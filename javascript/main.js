@@ -194,10 +194,15 @@ function createDetailSection(i) {
     id = i;
     detailSection = document.getElementById("detailSection");
     detailSection.classList.add('detail-section');
+
     // detailSection.addEventListener('click', detailsClickHandler)
 
 
     fillDetailSection(id);
+
+    setTimeout(() => {
+        detailSection.classList.add('active');
+    }, 50);
 
 }
 
@@ -230,7 +235,12 @@ function removeDetailSection() {
 
     detailSectionTop.innerHTML = "";
     detailSectionBottom.innerHTML = "";
-    detailSection.classList.remove('detail-section');
+    setTimeout(() => {
+        detailSection.classList.remove('detail-section');
+    }, 50);
+    detailSection.classList.remove('active')
+
+
 }
 
 
