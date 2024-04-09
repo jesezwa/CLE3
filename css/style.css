@@ -203,7 +203,9 @@ list, navigation, hamburger
 .detail-section {
     background-color: #9B57FF;
     box-shadow: 0px -4px 12px 0px #00000026;
-    height: 70vh;
+    height: 0;
+    overflow: hidden;
+    transition:  height ease 0.3s;
     width: 100vw;
     margin-bottom: auto;
     position: absolute;
@@ -214,6 +216,10 @@ list, navigation, hamburger
     flex-direction: column;
 }
 
+
+.detail-section:active {
+    height: 70vh;
+}
 .detail-section-top {
     display: flex;
     flex-direction: column;
