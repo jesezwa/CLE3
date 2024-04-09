@@ -151,8 +151,8 @@ function createDetailMarkers() {
     };
 
     // Hardcoded informatie voor de detail markers
-    detailMarkers = ['Team 1', 'Team 2', 'Team 3'];
-    detailInfo = ['Team 1 blablabla', 'team 2 blablblal', 'team 3 blabla']
+    detailMarkers = ['Team 14', 'Team 9', 'Team 15'];
+    detailInfo = ['Jouw persoonlijke shopmaatje', 'Het vibreer apparaat die je armband laat trillen', 'Jouw personal workout app']
     coordsDetailMarkers = [{lat: 51.917395, lng: 4.484562},
         {lat: 51.917403, lng: 4.484597},
         {lat: 51.917409, lng: 4.484633},
