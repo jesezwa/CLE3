@@ -237,7 +237,7 @@ function removeDetailSection() {
     detailSectionBottom.innerHTML = "";
     setTimeout(() => {
         detailSection.classList.remove('detail-section');
-    }, 500);
+    }, 50);
     detailSection.classList.remove('active')
 
 
